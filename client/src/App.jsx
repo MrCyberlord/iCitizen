@@ -1,8 +1,12 @@
 import { ThemeProvider, CssBaseline, Box } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import LandingPage from './components/layout/LandingPage';
+import CitizenDashboard from './components/citizen/CitizenDashboard';
+import OrgDashboard from './components/organization/OrgnizationDashboard';
+import SuperAdminDashboard from './components/superAdmin/SuperAdminDashboard';
 
 const theme = createTheme({
   palette: {
@@ -17,20 +21,28 @@ const theme = createTheme({
 
 const App = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          minHeight: '100vh',
-        }}
-      >
-        <Navbar />
-        <LandingPage />
-        <Footer />
-      </Box>
-    </ThemeProvider>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            minHeight: '100vh',
+          }}
+        >
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/citizen" element={<CitizenDashboard />} />
+            <Route path="/organization" element={<OrgDashboard />} />
+            <Route path="/admin" element={<SuperAdminDashboard />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+          <Footer />
+        </Box>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 };
 

@@ -5,7 +5,7 @@ import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
 
 const LandingPage = () => {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, width: '100%' }}>
       {/* Hero Section */}
       <Box
         sx={{
@@ -13,10 +13,11 @@ const LandingPage = () => {
           color: 'white',
           pt: 8,
           pb: 6,
-          mt: 8
+          mt: 8,
+          width: '100%'
         }}
       >
-        <Container maxWidth="sm">
+        <Container maxWidth={false} sx={{ width: '100%' }}>
           <Typography
             component="h1"
             variant="h2"
@@ -25,12 +26,25 @@ const LandingPage = () => {
           >
             Welcome to iCitizen
           </Typography>
-          <Typography variant="h5" align="center" paragraph>
+          <Typography 
+            variant="h5" 
+            align="center" 
+            paragraph
+            sx={{ maxWidth: '800px', mx: 'auto' }}
+          >
             Your one-stop platform for seamless interaction with government services.
             Simplifying bureaucracy, one click at a time.
           </Typography>
           <Box sx={{ mt: 4, display: 'flex', justifyContent: 'center', gap: 2 }}>
-            <Button variant="contained" color="secondary">
+            <Button 
+              variant="contained" 
+              sx={{ 
+                bgcolor: '#ff1744',
+                '&:hover': {
+                  bgcolor: '#d50000'
+                }
+              }}
+            >
               Get Started
             </Button>
             <Button variant="outlined" color="inherit">
@@ -41,8 +55,15 @@ const LandingPage = () => {
       </Box>
 
       {/* Features Section */}
-      <Container sx={{ py: 8 }} maxWidth="md">
-        <Grid container spacing={4}>
+      <Container 
+        maxWidth={false} 
+        sx={{ 
+          py: 8,
+          px: { xs: 2, sm: 4, md: 8 },
+          width: '100%'
+        }}
+      >
+        <Grid container spacing={4} justifyContent="center">
           <Grid item xs={12} sm={4}>
             <Paper
               sx={{
