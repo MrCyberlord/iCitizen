@@ -5,8 +5,9 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import LandingPage from './components/layout/LandingPage';
 import CitizenDashboard from './components/citizen/CitizenDashboard';
-import OrgDashboard from './components/organization/OrgnizationDashboard';
+import  OrganizationDashboard  from './components/organization/OrgnizationDashboard';
 import SuperAdminDashboard from './components/superAdmin/SuperAdminDashboard';
+import './App.css';
 
 const theme = createTheme({
   palette: {
@@ -24,23 +25,27 @@ const App = () => {
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            minHeight: '100vh',
-          }}
-        >
+        <div className="App">
           <Navbar />
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/citizen" element={<CitizenDashboard />} />
-            <Route path="/organization" element={<OrgDashboard />} />
-            <Route path="/admin" element={<SuperAdminDashboard />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-          <Footer />
-        </Box>
+          <main className="main-content">
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                minHeight: '100vh',
+              }}
+            >
+              <Routes>
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/citizen" element={<CitizenDashboard />} />
+                <Route path="/organization" element={<OrganizationDashboard />} />
+                <Route path="/superAdmin" element={<SuperAdminDashboard />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
+              <Footer />
+            </Box>
+          </main>
+        </div>
       </ThemeProvider>
     </BrowserRouter>
   );
